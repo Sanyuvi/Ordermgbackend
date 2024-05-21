@@ -45,6 +45,13 @@ router.post("/neworder", async (req, res) => {
       return res.status(400).json({ error: "Invalid data provided" });
     }
 
+    // restrict items below 5
+    if (items.length >= 5) {
+      return res
+        .status(400)
+        .json({ error: "Cannot have 5 or more items in an order" });
+    }
+
     // Calculate amount for each item
     items.forEach((item) => {
       item.amount = item.unitPrice * item.quantity;
