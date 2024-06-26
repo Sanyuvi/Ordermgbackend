@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { dataBaseConnection } from "./db.js";
 import { orderRouter } from "./Routes/order.js";
+import { itemRouter } from "./Routes/items.js";
 
 //config dotenv
 dotenv.config();
@@ -15,9 +16,11 @@ const app = express();
 //middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static("Images"));
 
 //Routes
 app.use("/api/orders", orderRouter);
+app.use("/api/items",itemRouter);
 
 //server listening
 app.listen(PORT, () => console.log(`Server started in localhost:${PORT} `));
