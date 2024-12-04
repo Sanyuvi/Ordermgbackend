@@ -14,13 +14,9 @@ const PORT = process.env.PORT;
 const app = express();
 
 //middleware
-const corsOptions = {
-  origin: "http://localhost:4200/", // Replace with your frontend's URL
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+
+app.options(cors()); // Handling cors
+
 app.use(express.json());
 app.use("/Images", express.static("Images"));
 
