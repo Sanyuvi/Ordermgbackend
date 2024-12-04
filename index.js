@@ -15,7 +15,7 @@ const app = express();
 
 //middleware
 
-app.options(cors()); // Handling cors
+app.use(cors()); // Handling cors
 
 app.use(express.json());
 app.use("/Images", express.static("Images"));
